@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Milk Thistle Product Page</title>
+    <style>
+      /* --- General Reset & Fonts --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      /* --- Main Container --- */
+      .product-container {
+        background-color: #fff;
+        max-width: 1000px;
+        width: 100%;
+        display: flex;
+        gap: 40px;
+        padding: 20px;
+        border-radius: 8px; /* Optional: adds subtle rounding */
+      }
+
+      /* --- Left Column (Image) --- */
+      .product-image-section {
+        flex: 1;
+        background-color: #fcfbf7; /* Light beige bg from image */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+      }
+
+      .product-image-section img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      /* --- Right Column (Details) --- */
+      .product-details-section {
+        flex: 1.2;
+        padding-top: 10px;
+      }
+
+      /* Typography */
+      h1 {
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 10px;
+        color: #222;
+      }
+
+      /* Rating Stars */
+      .rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      .stars {
+        color: #ffb400; /* Orange/Yellow star color */
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      .review-count {
+        color: #666;
+        margin-left: 5px;
+      }
+
+      /* Pricing */
+      .price-area {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        gap: 15px;
+      }
+
+      .current-price {
+        font-size: 32px;
+        font-weight: 700;
+        color: #222;
+      }
+
+      .old-price {
+        font-size: 18px;
+        color: #999;
+        text-decoration: line-through;
+      }
+
+      .bundle-tag {
+        background-color: #6e9e54; /* The green from the image */
+        color: white;
+        padding: 4px 8px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 2px;
+      }
+
+      /* Meta Data Table (Availability, SKU, etc) */
+      .meta-data {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        row-gap: 10px;
+        font-size: 13px;
+        margin-bottom: 30px;
+      }
+
+      .meta-label {
+        font-weight: 700;
+        color: #444;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      .meta-value {
+        color: #555;
+      }
+
+      /* Action Buttons Area */
+      .actions-row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      /* Quantity Selector */
+      .qty-selector {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        background-color: #f7f7f7;
+        height: 44px;
+      }
+
+      .qty-btn {
+        background: none;
+        border: none;
+        width: 35px;
+        font-size: 18px;
+        cursor: pointer;
+        color: #333;
+      }
+
+      .qty-input {
+        width: 40px;
+        text-align: center;
+        border: none;
+        background: transparent;
+        font-weight: 600;
+      }
+
+      /* Main Buttons */
+      .btn {
+        height: 44px;
+        padding: 0 30px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+
+      .btn-add {
+        background-color: #6e9e54;
+        color: white;
+        border: 1px solid #6e9e54;
+      }
+
+      .btn-add:hover {
+        background-color: #5c8546;
+      }
+
+      .btn-buy {
+        background-color: white;
+        color: #333;
+        border: 1px solid #333;
+      }
+
+      .btn-buy:hover {
+        background-color: #f0f0f0;
+      }
+
+      /* List Items */
+      .info-list {
+        list-style: none;
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 30px;
+        line-height: 1.8;
+      }
+
+      .info-list li::before {
+        content: "•";
+        color: #333;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+
+      .info-list li {
+        padding-left: 1em;
+      }
+
+      /* Payment Icons Footer */
+      .payment-icons {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        opacity: 0.7;
+      }
+
+      .payment-logo {
+        font-weight: bold;
+        font-size: 12px;
+        color: #6e9e54; /* Styled to look like logo placeholders */
+        border: 1px solid #ddd;
+        padding: 2px 5px;
+        border-radius: 3px;
+      }
+
+      .contact-info {
+        font-size: 13px;
+        font-weight: 700;
+        margin-top: 5px;
+        color: #333;
+      }
+
+      /* --- Responsive Mobile View --- */
+      @media (max-width: 768px) {
+        .product-container {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .meta-data {
+          grid-template-columns: 120px 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="product-container">
+      <div class="product-image-section">
+        <img
+          src="https://images.unsplash.com/photo-1577156943187-5c023d517c22?auto=format&fit=crop&q=80&w=600"
+          alt="Milk Thistle Supplement Bottle"
+        />
+      </div>
+
+      <div class="product-details-section">
+        <h1>Controls Blood Sugar Levels, Lowers Bad Cholesterol</h1>
+
+        <div class="rating">
+          <span class="stars">★★★★☆</span>
+          <span class="review-count">81 Reviews</span>
+        </div>
+
+        <div class="price-area">
+          <span class="current-price">$22.00</span>
+          <span class="old-price">$32.00</span>
+          <span class="bundle-tag">Bundle 200ml</span>
+        </div>
+
+        <div class="meta-data">
+          <div class="meta-label">AVAILABILITY:</div>
+          <div class="meta-value">Available</div>
+
+          <div class="meta-label">PRODUCT TYPE:</div>
+          <div class="meta-value">Ayurvedic Oil / Thailam / Kuzhampu</div>
+
+          <div class="meta-label">PRODUCT VENDOR:</div>
+          <div class="meta-value">Kottakkal Arya Vaidya Sala</div>
+
+          <div class="meta-label">PRODUCT SKU:</div>
+          <div class="meta-value">AK-A404A</div>
+        </div>
+
+        <div class="actions-row">
+          <div class="qty-selector">
+            <button class="qty-btn">-</button>
+            <input type="text" class="qty-input" value="1" />
+            <button class="qty-btn">+</button>
+          </div>
+
+          <button class="btn btn-add">Add to Cart &rarr;</button>
+          <button class="btn btn-buy">Buy Now &rarr;</button>
+        </div>
+
+        <ul class="info-list">
+          <li>Ayurvedic Medicine</li>
+          <li>Exchange Or Return Within 7 Days Of A Delivery</li>
+        </ul>
+
+        <div class="contact-info">
+          • For Shipping Other Than India Please Contact: +91 96292 97111
+        </div>
+
+        <br />
+
+        <div class="payment-icons">
+          <span class="payment-logo">BANK<br />TRANSFER</span>
+          <span class="payment-logo" style="color: #1a1f71">VISA</span>
+          <span class="payment-logo">UPI</span>
+          <span class="payment-logo">RuPay</span>
+          <span class="payment-logo" style="color: #eb001b">mastercard</span>
+          <span class="payment-logo">G Pay</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
