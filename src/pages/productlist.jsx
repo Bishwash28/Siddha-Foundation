@@ -92,14 +92,14 @@ const ProductList = () => {
                 </div>
               </div>
 
-              <div className="flex-grow flex flex-col justify-between items-center w-full">
+              <div className=" flex flex-col grow justify-between items-center w-full">
                 {/* Title */}
                 <h2 className="text-base font-bold text-gray-800 line-clamp-2 mb-1">
                   {product.title}
                 </h2>
 
                 {/* Description (from first feature) */}
-                <p className="text-sm text-gray-600 line-clamp-2 mb-3 px-1 flex-grow">
+                <p className="text-sm text-gray-600 line-clamp-2 mb-3 px-1 grow">
                   {getProductDescription(product)}
                 </p>
 
