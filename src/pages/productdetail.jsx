@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
-// Assuming productData is correctly imported from its relative path
 import { productData } from "../productdata.js";
 
 // ----------------------------------------------------------------------
